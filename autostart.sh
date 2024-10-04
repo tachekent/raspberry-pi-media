@@ -17,4 +17,4 @@ done)&
 
 # Kodi is now running, send the command once
 echo "Kodi detected. Sending command..."
-kodi-send --action="playMedia(/storage/videos/cyclops.mov)" --action="PlayerControl(Repeat)"
+kodi-send --action="playMedia(/storage/videos/movie.mov)" --action="PlayerControl(Repeat)"
