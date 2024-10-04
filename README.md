@@ -1,10 +1,13 @@
-# Raspberry Pi 4k media player
+# Raspberry Pi 4k media player for installations
+
+Instructions for setting up a standalone media player on a Pi. With additional steps and script for autostarting and looping a single file for media installations.
 
 ## Requirements
 
 ### Hardware
 
 - \>= Raspberry Pi4 2GB+
+- Pi case - [Flirc](https://flirc.tv/products/flirc-raspberry-pi-4-case-silver?variant=43085036454120) do nice heatsinking ones
 - Sandisk MicroSDX card Extreme+ 64GB
 - USB-C charge cable
 - Micro HDMI - standard HDMI cable
@@ -40,18 +43,23 @@ Connect the Pi and bootup into LibreElec. Setup either ssh or WiFi so that you c
 
 If connected via SSH check the IP address in the network settings in the LibreElec addon.
 
-Connect the ethernet to a switch / network and check the login using:
-`ssh root@[ip address]`. The default user in L.Elec is `root`. After that set up an ssh-key  using [this guide](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server) so that you can easily `scp` media files over. Assuming you already have a keypair, copy the public key to the Pi, test logging in and transfer your files:
+The default user in LibreELEC is `root`. Connect the ethernet to a switch / network and check the login. You'll be promted for the password you setup earlier:
 
 ```shell
+ssh root@[ip address]
+```
+
+After that set up an ssh-key using [this guide](https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-linux-server) so that you can easily `scp` media files over. Assuming you already have a keypair, copy the public key to the Pi, test logging in and transfer your files:
+
+```shell
+# Set up and test it
 ssh-copy-id root@remote_host
-# test it 
 ssh root@remote_host
-# back to localhost
 exit
-# copy files across straight into the remote video folder
+
+# Copy files across
+# (remember to update the filename in autostart.sh)
 scp movie.mov root@remote_host:videos/movie.mov
-# (update the name of the movie to autoplay in autostart)
 scp autostart.sh root@remote_host:.config/autostart.sh
 ssh root@remote_host
 chmod +x .config/autostart.sh
@@ -60,11 +68,13 @@ reboot
 
 Hey presto! On reboot after a brief pause on the LibreELEC homescreen, the video will start and loop infinitely.
 
-Everything else you should be able to configure from within the UI.
+Everything else you should be able to configure from within the LibreELEC UI.
+
+I powered the Pi via USB from the projector so that it powered up and down in tandem. Probably not great for it in the long run, but until it breaks I'll stick with it 🌞
 
 
 ## Useful links
-[fix audio sync issues](https://www.youtube.com/watch?v=G3v_dFVuwsE) - helped a lot with a 10m cable via a projector to a soundbar.
+[Fix audio sync issues](https://www.youtube.com/watch?v=G3v_dFVuwsE) - Pretty basic but helped me fix a delay issue with a 10m cable via a projector to a soundbar.
 
 [LibreELEC wiki: startup/shutdown scripts](https://wiki.libreelec.tv/configuration/startup-shutdown) - where to put things & when they run
 
