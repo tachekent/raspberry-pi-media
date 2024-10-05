@@ -79,3 +79,12 @@ I powered the Pi via USB from the projector so that it powered up and down in ta
 [LibreELEC wiki: startup/shutdown scripts](https://wiki.libreelec.tv/configuration/startup-shutdown) - where to put things & when they run
 
 [KODI Wiki List of built-in functions](https://kodi.wiki/view/List_of_built-in_functions) - all the actions you can send via `kodi-send` (as we do in the startup script).
+
+## Next time...
+
+Next time I do this I'm going to look at mpv <https://mpv.io/manual/master/> which seems to have an advanced set of command line controls along with the possibility for primary/secondary sync mode over a network. This seems to be the preferred replacement for omxplayer that I used for multiscreen sync on a previous project.
+
+I tried using VLC from the command line this time around, but it had difficulty with the data rate and the video quickly became choppy.
+
+- [Video players for Raspberry pi](https://www.luisllamas.es/en/mpv-player-on-raspberry-pi/)
+- [Replacing OMXplayer with VLC](https://forums.raspberrypi.com/viewtopic.php?t=336535)
